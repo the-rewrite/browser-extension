@@ -57,8 +57,6 @@ extension: build/client/notebook.html
 extension: build/settings-data.js
 extension: build/unload-client.js
 extension: build/pdfjs-init.js
-extension: build/pdfjs-setup-env.js
-extension: build/pdfjs-worker-init.js
 extension: $(addprefix build/,$(EXTENSION_SRC))
 
 build/extension.bundle.js: src/background/index.js
@@ -100,20 +98,20 @@ dist/%.zip dist/%.xpi: extension
 	cd build && find . -not -path '*/\.*' -type f | zip -q -@ $(abspath $@)
 
 .PHONY: lint
-lint:
+lint: node_modules/.uptodate
 	$(ESLINT) .
 	yarn typecheck
 
 .PHONY: checkformatting
-checkformatting:
+checkformatting: node_modules/.uptodate
 	$(PRETTIER) --check 'src/**/*.js' 'tests/**/*.js'
 
 .PHONY: format
-format:
+format: node_modules/.uptodate
 	$(PRETTIER) --list-different --write 'src/**/*.js' 'tests/**/*.js'
 
 .PHONY: test
-test:
+test: node_modules/.uptodate
 	yarn test
 
 .PHONY: sure

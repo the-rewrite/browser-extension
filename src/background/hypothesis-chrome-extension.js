@@ -1,11 +1,11 @@
-import BrowserAction from './browser-action';
-import directLinkQuery from './direct-link-query';
+import { BrowserAction } from './browser-action';
+import { directLinkQuery } from './direct-link-query';
 import * as errors from './errors';
-import HelpPage from './help-page';
+import { HelpPage } from './help-page';
 import settings from './settings';
-import SidebarInjector from './sidebar-injector';
-import TabState from './tab-state';
-import TabStore from './tab-store';
+import { SidebarInjector } from './sidebar-injector';
+import { TabState } from './tab-state';
+import { TabStore } from './tab-store';
 
 /**
  * The main extension application. This wires together all the smaller
@@ -29,7 +29,7 @@ import TabStore from './tab-store';
  * - https://developer.chrome.com/extensions/tabs
  * - https://developer.chrome.com/extensions/extension
  *
- * @param {Object} services
+ * @param {object} services
  * @param {chrome.tabs} services.chromeTabs
  * @param {chrome.extension} services.chromeExtension
  * @param {chrome.storage} services.chromeStorage

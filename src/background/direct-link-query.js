@@ -4,7 +4,7 @@
  *
  * See https://h-client.readthedocs.io/en/latest/publishers/config/#config-settings
  *
- * @typedef {Object} Query
+ * @typedef Query
  * @property {string} [annotations] - ID of the direct-linked annotation
  * @property {string} [query] - Filter query from the sidebar
  * @property {string} [group] - ID of the direct-linked group
@@ -22,7 +22,7 @@
  * @return {Query|null}
  *   The direct link query translated into client configuration settings.
  */
-export default function directLinkQuery(url) {
+export function directLinkQuery(url) {
   // Annotation IDs are url-safe-base64 identifiers
   // See https://tools.ietf.org/html/rfc4648#page-7
   const idMatch = url.match(/#annotations:([A-Za-z0-9_-]+)$/);

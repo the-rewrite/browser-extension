@@ -1,5 +1,5 @@
 import * as errors from '../../src/background/errors';
-import SidebarInjector from '../../src/background/sidebar-injector';
+import { SidebarInjector } from '../../src/background/sidebar-injector';
 import { toResult } from '../promise-util';
 
 // The root URL for the extension returned by the
@@ -106,6 +106,19 @@ describe('SidebarInjector', function () {
           );
         }
       );
+    });
+
+    [{ id: 1 }, { url: 'https://foobar.com' }].forEach(tab => {
+      it('throws if tab does not have ID or URL', async () => {
+        let error;
+        try {
+          await injector.injectIntoTab(tab);
+        } catch (e) {
+          error = e;
+        }
+        assert.instanceOf(error, Error);
+        assert.equal(error.message, 'Tab is missing ID or URL');
+      });
     });
 
     it('succeeds if the tab is already displaying the embedded PDF viewer', function () {
