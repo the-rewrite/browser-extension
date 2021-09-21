@@ -54,6 +54,7 @@ extension: build/manifest.json
 extension: build/client/build
 extension: build/client/app.html
 extension: build/client/notebook.html
+extension: build/client/the-rewrite.html
 extension: build/settings-data.js
 extension: build/unload-client.js
 extension: build/pdfjs-init.js
@@ -81,6 +82,8 @@ build/client/build: node_modules/hypothesis/build/manifest.json
 build/client/app.html: src/sidebar-app.html.mustache build/client build/.settings.json
 	tools/template-context-app.js build/.settings.json | $(MUSTACHE) - $< >$@
 build/client/notebook.html: build/client/app.html
+	cp $< $@
+build/client/the-rewrite.html: build/client/app.html
 	cp $< $@
 build/settings-data.js: src/settings-data.js.mustache build/client build/.settings.json
 	tools/template-context-settings.js build/.settings.json | $(MUSTACHE) - $< >$@

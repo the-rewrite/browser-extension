@@ -288,6 +288,7 @@ export default function HypothesisChromeExtension({
         assetRoot: chromeExtension.getURL('/client/'),
         sidebarAppUrl: chromeExtension.getURL('/client/app.html'),
         notebookAppUrl: chromeExtension.getURL('/client/notebook.html'),
+        theRewriteAppUrl: chromeExtension.getURL('/client/the-rewrite.html'),
       };
 
       // Pass the direct-link query as configuration into the client.
