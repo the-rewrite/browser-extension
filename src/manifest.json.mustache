@@ -1,11 +1,11 @@
 {
-  "name": "Hypothesis - Web & PDF Annotation",
-  "short_name": "Hypothesis",
+  "name": "The Rewrite Collaborative Framework",
+  "short_name": "The Rewrite",
   "version": "{{ version }}",
   {{#browserIsChrome}}
   "version_name": "{{ version }} ({{ versionName }})",
   {{/browserIsChrome}}
-  "manifest_version": 2,
+  "manifest_version": 3,
 
   {{#browserIsChrome}}
   "minimum_chrome_version": "64",
@@ -79,10 +79,12 @@
   },
   {{/browserIsChrome}}
 
-  "web_accessible_resources": [
+  "web_accessible_resources": [{
+    "resources": [ "pdfjs/web/viewer.html" ],
+    "matches": [
     "client/*",
     "help/*",
-    "pdfjs/*",
-    "pdfjs/web/viewer.html"
-  ]
+    "pdfjs/*"
+    ],
+  }]
 }
